@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Delivery Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="home-page">
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <img src="images/Stackly_logo.png" alt="Stackly logo">
+      <span>Foodly</span>
+    </a>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <a class="active" href="index.html">Home</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="offers.html">Offers</a>
+      <a href="popular.html">Popular</a>
+      <a href="app.html">App</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <a class="nav-button" href="login.html">Login</a>
+  </header>
+
+  <main>
+    <section class="hero" id="order">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="eyebrow">Fresh food at your door in minutes</p>
+        <h1>Colorful cravings, delivered fast.</h1>
+        <p class="hero-copy">
+          Discover local restaurants, trending dishes, hot deals, and joyful meals from a delivery platform built for every mood.
+        </p>
+
+        <form class="search-panel">
+          <label for="location">Delivery location</label>
+          <div class="search-row">
+            <input id="location" type="text" placeholder="Enter your street or area">
+            <button type="submit">Find Food</button>
+          </div>
+        </form>
+
+        <div class="hero-stats" aria-label="Foodly highlights">
+          <div>
+            <strong>30 min</strong>
+            <span>Avg delivery</span>
+          </div>
+          <div>
+            <strong>2.5k+</strong>
+            <span>Restaurants</span>
+          </div>
+          <div>
+            <strong>4.9</strong>
+            <span>Happy rating</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="category-strip" id="restaurants" aria-label="Food categories">
+      <a class="category pizza" href="#popular">
+        <span>Pizza</span>
+        <strong>Cheesy picks</strong>
+      </a>
+      <a class="category bowl" href="#popular">
+        <span>Healthy Bowls</span>
+        <strong>Fresh colors</strong>
+      </a>
+      <a class="category burger" href="#popular">
+        <span>Burgers</span>
+        <strong>Juicy bites</strong>
+      </a>
+      <a class="category sushi" href="#popular">
+        <span>Sushi</span>
+        <strong>Clean flavor</strong>
+      </a>
+    </section>
+
+    <section class="discover" id="discover">
+      <div class="discover-image">
+        <img src="images/cuisine-collage.png" alt="Colorful global dishes arranged for delivery">
+      </div>
+      <div class="discover-content">
+        <p class="eyebrow">Taste trails</p>
+        <h2>Explore a new food mood every day</h2>
+        <p>
+          Jump from comfort classics to bold street food, light lunches, date-night dinners, sweet treats, and fresh drinks without opening five different apps.
+        </p>
+        <div class="mood-grid">
+          <span>Street Bites</span>
+          <span>Fresh & Fit</span>
+          <span>Midnight Snacks</span>
+          <span>Family Feasts</span>
+          <span>Cafe Sips</span>
+          <span>Global Bowls</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="offers" id="offers">
+      <div class="section-heading">
+        <p class="eyebrow">Daily specials</p>
+        <h2>Deals that make dinner brighter</h2>
+      </div>
+
+      <div class="offer-grid">
+        <article class="offer-card mango">
+          <span class="offer-tag">Today only</span>
+          <h3>Free delivery on family combos</h3>
+          <p>Big portions, bright flavors, and zero delivery fee for orders over $29.</p>
+        </article>
+        <article class="offer-card mint">
+          <span class="offer-tag">Lunch rush</span>
+          <h3>Buy one bowl, get a drink</h3>
+          <p>Pair grain bowls, salad bowls, or noodle bowls with a chilled refreshment.</p>
+        </article>
+        <article class="offer-card berry">
+          <span class="offer-tag">Weekend</span>
+          <h3>20% off street food favorites</h3>
+          <p>Tacos, rolls, dumplings, wraps, and more colorful bites from nearby kitchens.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="spotlight">
+      <div class="section-heading">
+        <p class="eyebrow">Local favorites</p>
+        <h2>Made nearby, delivered with care</h2>
+      </div>
+
+      <div class="spotlight-grid">
+        <article class="story-card partner-story">
+          <img src="images/restaurant-partner.png" alt="Restaurant kitchen preparing delivery orders">
+          <div>
+            <span>Partner kitchens</span>
+            <h3>From prep counter to your table</h3>
+            <p>Foodly highlights restaurants that package carefully, update availability live, and keep every order moving.</p>
+          </div>
+        </article>
+
+        <article class="story-card dessert-story">
+          <img src="images/dessert-drinks.png" alt="Desserts and colorful drinks ready for delivery">
+          <div>
+            <span>Sweet pause</span>
+            <h3>Desserts, drinks, and little rewards</h3>
+            <p>Add a cold coffee, fruit lemonade, brownie box, or waffle treat when the meal needs a happy ending.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="delivery-showcase">
+      <div class="section-heading">
+        <p class="eyebrow">Delivery experience</p>
+        <h2>Fast delivery that feels clear from start to finish</h2>
+      </div>
+
+      <div class="delivery-grid">
+        <article class="delivery-card delivery-large">
+          <img src="images/delivery-courier.png" alt="Food delivery courier riding through a city street">
+          <div>
+            <span>Fast pickup</span>
+            <h3>Nearby couriers move when your kitchen is ready</h3>
+            <p>Foodly pairs each order with the best available delivery partner so meals spend less time waiting and more time staying fresh.</p>
+          </div>
+        </article>
+
+        <article class="delivery-card">
+          <img src="images/delivery-tracking.png" alt="Smartphone with delivery tracking beside packed food">
+          <div>
+            <span>Live tracking</span>
+            <h3>Follow the route</h3>
+            <p>Track preparation, pickup, and arrival updates with simple, colorful status cards.</p>
+          </div>
+        </article>
+
+        <article class="delivery-card">
+          <img src="images/delivery-doorstep.png" alt="Food delivery package placed at an apartment doorstep">
+          <div>
+            <span>Doorstep care</span>
+            <h3>Packed neatly</h3>
+            <p>Restaurants seal orders carefully and delivery partners handle every handoff with attention.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="delivery-steps">
+      <article>
+        <strong>01</strong>
+        <h3>Choose your craving</h3>
+        <p>Search by cuisine, mood, restaurant, or deal and build your perfect cart.</p>
+      </article>
+      <article>
+        <strong>02</strong>
+        <h3>Kitchen confirms</h3>
+        <p>Your restaurant accepts the order, prepares it fresh, and packs it for travel.</p>
+      </article>
+      <article>
+        <strong>03</strong>
+        <h3>Courier collects</h3>
+        <p>A nearby delivery partner picks up your meal at the right moment.</p>
+      </article>
+      <article>
+        <strong>04</strong>
+        <h3>Enjoy at home</h3>
+        <p>Get a clean doorstep handoff and dig into food that arrives ready to enjoy.</p>
+      </article>
+    </section>
+
+    <section class="popular" id="popular">
+      <div class="section-heading">
+        <p class="eyebrow">Most ordered</p>
+        <h2>Popular plates people love</h2>
+      </div>
+
+      <div class="dish-grid">
+        <article class="dish-card">
+          <div class="dish-image dish-one"></div>
+          <div class="dish-body">
+            <span>Spicy and bright</span>
+            <h3>Firecracker Noodle Bowl</h3>
+            <p>Chili noodles, crisp greens, roasted peanuts, and sesame lime sauce.</p>
+            <strong>$12.99</strong>
+          </div>
+        </article>
+        <article class="dish-card">
+          <div class="dish-image dish-two"></div>
+          <div class="dish-body">
+            <span>Chef favorite</span>
+            <h3>Rainbow Garden Pizza</h3>
+            <p>Wood-fired crust, basil cream, cherry tomatoes, olives, and peppers.</p>
+            <strong>$16.50</strong>
+          </div>
+        </article>
+        <article class="dish-card">
+          <div class="dish-image dish-three"></div>
+          <div class="dish-body">
+            <span>Best seller</span>
+            <h3>Stacked Smash Burger</h3>
+            <p>Double patty, pickles, melted cheese, crunchy onions, and house sauce.</p>
+            <strong>$14.25</strong>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="promise-row" aria-label="Delivery promises">
+      <article>
+        <span>01</span>
+        <h3>Live kitchen timing</h3>
+        <p>See when your meal is accepted, prepared, packed, and on the way.</p>
+      </article>
+      <article>
+        <span>02</span>
+        <h3>Smart freshness route</h3>
+        <p>Orders are matched with nearby couriers to keep hot food hot and cold drinks chilled.</p>
+      </article>
+      <article>
+        <span>03</span>
+        <h3>One-tap reorder</h3>
+        <p>Save favorite meals, delivery notes, and payment details for faster repeat orders.</p>
+      </article>
+      <article>
+        <span>04</span>
+        <h3>Color-coded deals</h3>
+        <p>Spot free delivery, combo savings, and flash discounts without hunting around.</p>
+      </article>
+    </section>
+
+    <section class="app-band" id="app">
+      <div>
+        <p class="eyebrow">Easy ordering</p>
+        <h2>Your next meal is three taps away</h2>
+        <p>Browse colorful menus, track your courier live, save favorites, and reorder your comfort meal whenever hunger calls.</p>
+      </div>
+
+      <div class="phone-card" aria-label="Foodly mobile app preview">
+        <div class="phone-top"></div>
+        <div class="phone-order">
+          <span>Arriving soon</span>
+          <strong>Veggie fiesta tacos</strong>
+          <small>12 minutes away</small>
+        </div>
+        <div class="route-line"></div>
+        <div class="mini-grid">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <section class="footer-brand">
+        <img class="footer-mark" src="images/Stackly_logo.png" alt="Stackly logo">
+        <p>Fresh meals, trusted restaurants, live delivery tracking, and everyday food offers from your favorite local kitchens.</p>
+        <div class="footer-social" aria-label="Social links">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-3.3 0-5 2-5 5v3H6v4h3v8h4v-8h3.3l.7-4h-4V9c0-.7.3-1 1-1z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10c3 0 5 2 5 5v10c0 3-2 5-5 5H7c-3 0-5-2-5-5V7c0-3 2-5 5-5zm0 2c-1.9 0-3 1.1-3 3v10c0 1.9 1.1 3 3 3h10c1.9 0 3-1.1 3-3V7c0-1.9-1.1-3-3-3H7zm5 4a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm0 2.1A1.9 1.9 0 1 0 12 14a1.9 1.9 0 0 0 0-3.9zM17.5 6.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2h3.1l-6.8 7.8 8 12.2h-6.3l-4.9-7-5.7 7H3.2l7.3-8.5L2.8 2h6.4l4.4 6.4L18.9 2zm-1.1 17.8h1.7L8.2 4.1H6.4l11.4 15.7z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2s-.2-1.6-.8-2.3c-.8-.8-1.7-.8-2.1-.9C15.8 3.8 12 3.8 12 3.8s-3.8 0-6.7.2c-.4.1-1.3.1-2.1.9-.6.7-.8 2.3-.8 2.3S2.2 9.1 2.2 11v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.8 2.3c.8.8 1.9.8 2.4.9 1.7.2 6.4.2 6.4.2s3.8 0 6.7-.2c.4-.1 1.3-.1 2.1-.9.6-.7.8-2.3.8-2.3s.2-1.9.2-3.8V11c0-1.9-.2-3.8-.2-3.8zM10 15.2V8.6l6 3.3-6 3.3z"/></svg></a>
+        </div>
+      </section>
+      <nav class="footer-column" aria-label="Quick links">
+        <h2>Quick Links</h2>
+        <a href="index.html">Home</a>
+        <a href="restaurants.html">Restaurants</a>
+        <a href="offers.html">Offers</a>
+        <a href="popular.html">Popular Food</a>
+        <a href="app.html">App</a>
+      </nav>
+      <nav class="footer-column" aria-label="Food delivery services">
+        <h2>Services</h2>
+        <a href="popular.html">Order Meals</a>
+        <a href="offers.html">Daily Deals</a>
+        <a href="restaurants.html">Partner Kitchens</a>
+        <a href="app.html">Live Tracking</a>
+        <a href="contact.html">Restaurant Support</a>
+      </nav>
+      <section class="footer-column">
+        <h2>Contact</h2>
+        <p>24 Market Street, Downtown Food District</p>
+        <p>+1 555 018 2488</p>
+        <p>hello@foodly.example</p>
+        <p>Daily: 8 AM - 11 PM</p>
+      </section>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Fresh Delivery. All rights reserved.</p>
+      <div>
+        <a href="contact.html">Terms &amp; Conditions</a>
+        <a href="contact.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
