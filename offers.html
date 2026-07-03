@@ -6,16 +6,20 @@
   <title>Offers | Foodly</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700&family=Playfair+Display:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="inner-page offers-page">
   <header class="site-header">
-    <a class="brand" href="index.html">
+    <a class="brand" href="index.html" aria-label="Stackly home">
       <img src="images/Stackly_logo.png" alt="Stackly logo">
-      <span>Foodly</span>
     </a>
-    <nav class="main-nav" aria-label="Main navigation">
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="main-navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="main-nav" id="main-navigation" aria-label="Main navigation">
       <a href="index.html">Home</a>
       <a href="restaurants.html">Restaurants</a>
       <a class="active" href="offers.html">Offers</a>

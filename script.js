@@ -8,6 +8,35 @@ function updateHeader() {
   header.classList.toggle("is-scrolled", window.scrollY > 18);
 }
 
+function setupNavigation() {
+  if (!header) return;
+
+  const toggle = header.querySelector(".nav-toggle");
+  const navLinks = header.querySelectorAll(".main-nav a, .nav-button");
+
+  if (!toggle) return;
+
+  function setMenuState(isOpen) {
+    header.classList.toggle("is-menu-open", isOpen);
+    toggle.setAttribute("aria-expanded", String(isOpen));
+    toggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+  }
+
+  toggle.addEventListener("click", () => {
+    setMenuState(!header.classList.contains("is-menu-open"));
+  });
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => setMenuState(false));
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 880) {
+      setMenuState(false);
+    }
+  });
+}
+
 function showToast(message) {
   let toast = document.querySelector(".toast");
 
@@ -24,6 +53,23 @@ function showToast(message) {
   showToast.timer = window.setTimeout(() => {
     toast.classList.remove("show");
   }, 2800);
+}
+
+function showLoginSuccess(message) {
+  const loginForm = document.querySelector(".login-form");
+  if (!loginForm) return;
+
+  let successMessage = loginForm.querySelector(".login-success-message");
+
+  if (!successMessage) {
+    successMessage = document.createElement("p");
+    successMessage.className = "login-success-message";
+    successMessage.setAttribute("role", "status");
+    loginForm.prepend(successMessage);
+  }
+
+  successMessage.textContent = message;
+  successMessage.classList.add("show");
 }
 
 function setupReveal() {
@@ -87,10 +133,139 @@ function setupForms() {
   if (loginForm) {
     loginForm.addEventListener("submit", (event) => {
       event.preventDefault();
-      showToast("Login ready! Welcome back to Foodly.");
+
+      if (document.body.classList.contains("is-signup")) {
+        if (!loginForm.checkValidity()) {
+          loginForm.reportValidity();
+          return;
+        }
+
+        const password = document.querySelector("#login-password");
+        const confirmPassword = document.querySelector("#confirm-password");
+
+        if (password && confirmPassword && password.value !== confirmPassword.value) {
+          confirmPassword.setCustomValidity("Passwords do not match.");
+          confirmPassword.reportValidity();
+          confirmPassword.setCustomValidity("");
+          return;
+        }
+
+        showToast("Account created. Please sign in.");
+        loginForm.reset();
+        window.setTimeout(() => {
+          window.setAuthMode?.("signin");
+        }, 900);
+        return;
+      }
+
+      const email = document.querySelector("#login-email");
+      const password = document.querySelector("#login-password");
+
+      if (email && !email.reportValidity()) {
+        return;
+      }
+
+      if (password && !password.reportValidity()) {
+        return;
+      }
+
+      const submitButton = loginForm.querySelector("button[type='submit']");
+      showToast("Sign in successful. Opening dashboard...");
+      showLoginSuccess("Sign in successful. Opening dashboard...");
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Signing In...";
+      }
+
       loginForm.reset();
+      window.setTimeout(() => {
+        window.location.href = "dashboard.html";
+      }, 1200);
     });
   }
+
+  const dashboardSearch = document.querySelector(".dashboard-search");
+  const dashboardQuery = document.querySelector("#dashboard-query");
+
+  if (dashboardSearch && dashboardQuery) {
+    dashboardSearch.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const query = dashboardQuery.value.trim();
+      showToast(query ? `Searching dashboard for ${query}.` : "Type an order, rider, or restaurant name.");
+    });
+  }
+}
+
+function setupLogoutModal() {
+  const openButton = document.querySelector("[data-logout-open]");
+  const modal = document.querySelector("[data-logout-modal]");
+  const cancelButton = document.querySelector("[data-logout-cancel]");
+
+  if (!openButton || !modal || !cancelButton) return;
+
+  function setLogoutModal(isOpen) {
+    modal.classList.toggle("is-open", isOpen);
+    modal.setAttribute("aria-hidden", String(!isOpen));
+  }
+
+  openButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    setLogoutModal(true);
+  });
+
+  cancelButton.addEventListener("click", () => setLogoutModal(false));
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      setLogoutModal(false);
+    }
+  });
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal.classList.contains("is-open")) {
+      setLogoutModal(false);
+    }
+  });
+}
+
+function setupAuthMode() {
+  const loginPage = document.querySelector(".login-page");
+  const authLinks = document.querySelectorAll("[data-auth-mode]");
+  const heading = document.querySelector(".login-heading h2");
+  const subheading = document.querySelector(".login-heading p");
+  const submitButton = document.querySelector(".login-form button");
+
+  if (!loginPage || !authLinks.length || !heading || !subheading || !submitButton) return;
+
+  function setAuthMode(mode) {
+    const isSignup = mode === "signup";
+    loginPage.classList.toggle("is-signup", isSignup);
+    heading.textContent = isSignup ? "Create Account" : "Sign In";
+    subheading.textContent = isSignup ? "Start your Foodly dashboard." : "Enter your Foodly dashboard.";
+    submitButton.innerHTML = isSignup ? 'Create Account <span aria-hidden="true">-></span>' : 'Sign In <span aria-hidden="true">-></span>';
+  }
+
+  window.setAuthMode = setAuthMode;
+
+  authLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      setAuthMode(link.dataset.authMode);
+    });
+  });
+}
+
+function setupLoginRoleToggle() {
+  const roleButtons = document.querySelectorAll("[data-login-role]");
+  if (!roleButtons.length) return;
+
+  roleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      roleButtons.forEach((item) => item.classList.remove("active"));
+      button.classList.add("active");
+    });
+  });
 }
 
 function setupRestaurantSlider() {
@@ -183,8 +358,12 @@ function setupCountdowns() {
 window.addEventListener("scroll", updateHeader, { passive: true });
 window.addEventListener("load", () => {
   updateHeader();
+  setupNavigation();
   setupReveal();
   setupForms();
+  setupLogoutModal();
+  setupAuthMode();
+  setupLoginRoleToggle();
   setupRestaurantSlider();
   setupCountdowns();
 });

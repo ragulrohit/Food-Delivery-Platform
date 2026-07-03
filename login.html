@@ -6,88 +6,93 @@
   <title>Login | Foodly</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700&family=Playfair+Display:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="inner-page login-page">
-  <header class="site-header">
-    <a class="brand" href="index.html">
-      <img src="images/Stackly_logo.png" alt="Stackly logo">
-      <span>Foodly</span>
-    </a>
-    <nav class="main-nav" aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="restaurants.html">Restaurants</a>
-      <a href="offers.html">Offers</a>
-      <a href="popular.html">Popular</a>
-      <a href="app.html">App</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <a class="nav-button" href="login.html">Login</a>
-  </header>
+  <main class="login-experience">
+    <section class="login-showcase">
+      <a class="login-brand" href="index.html">
+        <img src="images/Stackly_logo.png" alt="Foodly logo">
+        <span>Foodly</span>
+      </a>
+      <div class="login-showcase-copy">
+        <p class="eyebrow">Members' kitchen</p>
+        <h1>Welcome to the <span>Foodly</span> table</h1>
+        <p>Access favorite meals, saved addresses, live orders, rewards, and exclusive restaurant offers curated for every craving.</p>
+      </div>
+    </section>
 
-  <main class="page-shell">
-    <section class="login-layout">
-      <div class="login-intro">
-        <p class="eyebrow">Welcome back</p>
-        <h1>Login to your Foodly account.</h1>
-        <p>Track active orders, reorder favorites, manage saved addresses, and unlock personal food offers.</p>
+    <section class="login-panel" aria-label="Foodly sign in">
+      <div class="login-tabs" aria-label="Account actions">
+        <a class="active" href="login.html" data-auth-mode="signin">Sign In</a>
+        <a href="login.html#create-account" data-auth-mode="signup">Create Account</a>
       </div>
 
-      <form class="login-form">
-        <label for="login-email">Email</label>
-        <input id="login-email" type="email" placeholder="you@example.com">
+      <div class="login-heading">
+        <h2>Sign In</h2>
+        <p>Enter your Foodly dashboard.</p>
+      </div>
+
+      <div class="login-role-toggle" aria-label="Login type">
+        <button class="active" type="button" data-login-role="user">User Login</button>
+        <button type="button" data-login-role="admin">Admin Login</button>
+      </div>
+
+      <form class="login-form" action="dashboard.html" novalidate>
+        <div class="signup-field">
+          <label for="signup-name">Full Name</label>
+          <input id="signup-name" type="text" placeholder="Your name" required>
+        </div>
+
+        <label for="login-email">Email Address</label>
+        <input id="login-email" type="email" placeholder="you@example.com" required>
+
         <label for="login-password">Password</label>
-        <input id="login-password" type="password" placeholder="Enter password">
-        <button type="submit">Login</button>
+        <div class="password-field">
+          <input id="login-password" type="password" placeholder="Enter password" required>
+        </div>
+
+        <div class="signup-field">
+          <label for="confirm-password">Confirm Password</label>
+          <div class="password-field">
+            <input id="confirm-password" type="password" placeholder="Confirm password" required>
+          </div>
+        </div>
+
+        <div class="signup-field">
+          <label for="signup-phone">Phone Number</label>
+          <input id="signup-phone" type="tel" placeholder="Phone number" required>
+        </div>
+
+        <div class="login-options">
+          <label><input type="checkbox"> Remember me</label>
+          <a href="contact.html">Forgot password?</a>
+        </div>
+
+        <button type="submit">Sign In <span aria-hidden="true">-></span></button>
       </form>
+
+      <div class="login-divider"><span>Or continue with</span></div>
+      <div class="social-login">
+        <a href="#" aria-label="Continue with Google">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.4c-.2 1.2-.9 2.3-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/>
+            <path fill="#34A853" d="M12 22c2.7 0 5-.9 6.6-2.5L15.4 17c-.9.6-2 .9-3.4.9-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6C4.7 19.7 8.1 22 12 22z"/>
+            <path fill="#FBBC05" d="M6.4 13.8c-.2-.6-.3-1.2-.3-1.8s.1-1.2.3-1.8V7.6H3.1C2.4 8.9 2 10.4 2 12s.4 3.1 1.1 4.4l3.3-2.6z"/>
+            <path fill="#EA4335" d="M12 6.1c1.5 0 2.8.5 3.8 1.5l2.8-2.8C16.9 3.1 14.7 2 12 2 8.1 2 4.7 4.3 3.1 7.6l3.3 2.6C7.2 7.9 9.4 6.1 12 6.1z"/>
+          </svg>
+          Google
+        </a>
+        <a href="#" aria-label="Continue with Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#1877F2" d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2.5V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/>
+          </svg>
+          Facebook
+        </a>
+      </div>
     </section>
   </main>
-
-  <footer class="site-footer">
-    <div class="footer-grid">
-      <section class="footer-brand">
-        <img class="footer-mark" src="images/Stackly_logo.png" alt="Stackly logo">
-        <p>Fresh meals, trusted restaurants, live delivery tracking, and everyday food offers from your favorite local kitchens.</p>
-        <div class="footer-social" aria-label="Social links">
-          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-3.3 0-5 2-5 5v3H6v4h3v8h4v-8h3.3l.7-4h-4V9c0-.7.3-1 1-1z"/></svg></a>
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10c3 0 5 2 5 5v10c0 3-2 5-5 5H7c-3 0-5-2-5-5V7c0-3 2-5 5-5zm0 2c-1.9 0-3 1.1-3 3v10c0 1.9 1.1 3 3 3h10c1.9 0 3-1.1 3-3V7c0-1.9-1.1-3-3-3H7zm5 4a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm0 2.1A1.9 1.9 0 1 0 12 14a1.9 1.9 0 0 0 0-3.9zM17.5 6.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></a>
-          <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2h3.1l-6.8 7.8 8 12.2h-6.3l-4.9-7-5.7 7H3.2l7.3-8.5L2.8 2h6.4l4.4 6.4L18.9 2zm-1.1 17.8h1.7L8.2 4.1H6.4l11.4 15.7z"/></svg></a>
-          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2s-.2-1.6-.8-2.3c-.8-.8-1.7-.8-2.1-.9C15.8 3.8 12 3.8 12 3.8s-3.8 0-6.7.2c-.4.1-1.3.1-2.1.9-.6.7-.8 2.3-.8 2.3S2.2 9.1 2.2 11v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.8 2.3c.8.8 1.9.8 2.4.9 1.7.2 6.4.2 6.4.2s3.8 0 6.7-.2c.4-.1 1.3-.1 2.1-.9.6-.7.8-2.3.8-2.3s.2-1.9.2-3.8V11c0-1.9-.2-3.8-.2-3.8zM10 15.2V8.6l6 3.3-6 3.3z"/></svg></a>
-        </div>
-      </section>
-      <nav class="footer-column" aria-label="Quick links">
-        <h2>Quick Links</h2>
-        <a href="index.html">Home</a>
-        <a href="restaurants.html">Restaurants</a>
-        <a href="offers.html">Offers</a>
-        <a href="popular.html">Popular Food</a>
-        <a href="app.html">App</a>
-      </nav>
-      <nav class="footer-column" aria-label="Food delivery services">
-        <h2>Services</h2>
-        <a href="popular.html">Order Meals</a>
-        <a href="offers.html">Daily Deals</a>
-        <a href="restaurants.html">Partner Kitchens</a>
-        <a href="app.html">Live Tracking</a>
-        <a href="contact.html">Restaurant Support</a>
-      </nav>
-      <section class="footer-column">
-        <h2>Contact</h2>
-        <p>24 Market Street, Downtown Food District</p>
-        <p>+1 555 018 2488</p>
-        <p>hello@foodly.example</p>
-        <p>Daily: 8 AM - 11 PM</p>
-      </section>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Fresh Delivery. All rights reserved.</p>
-      <div>
-        <a href="contact.html">Terms &amp; Conditions</a>
-        <a href="contact.html">Privacy Policy</a>
-      </div>
-    </div>
-  </footer>
 
   <script src="script.js"></script>
 </body>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Foodly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700&family=Playfair+Display:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-page">
+  <main class="dashboard-shell">
+    <aside class="dashboard-sidebar" aria-label="Dashboard navigation">
+      <a class="dashboard-logo" href="index.html" aria-label="Stackly home">
+        <img src="images/Stackly_logo.png" alt="Stackly logo">
+      </a>
+
+      <section class="dashboard-profile">
+        <span class="profile-avatar">RA</span>
+        <div>
+          <small>Welcome back</small>
+          <strong>Ragul</strong>
+          <p>ragulrohit143@gmail.com</p>
+        </div>
+      </section>
+
+      <nav class="dashboard-menu account-menu">
+        <p>My Account</p>
+        <a class="active" href="dashboard.html"><span class="menu-icon">D</span> Dashboard</a>
+        <a href="#orders"><span class="menu-icon">O</span> My Orders <b>3</b></a>
+        <a href="#reservations"><span class="menu-icon">S</span> Food Support</a>
+        <a href="#favorites"><span class="menu-icon">W</span> Wishlist</a>
+
+        <p>Rewards</p>
+        <a href="#rewards"><span class="menu-icon">R</span> Foodly Rewards</a>
+        <a href="#offers"><span class="menu-icon">M</span> Membership Plans</a>
+        <a href="#energy"><span class="menu-icon">I</span> Purchase Insights</a>
+
+        <p>Settings</p>
+        <a href="#notifications"><span class="menu-icon">N</span> Notifications</a>
+        <a href="#settings"><span class="menu-icon">G</span> Settings</a>
+      </nav>
+
+      <div class="dashboard-sidebar-actions">
+        <a href="index.html"><span class="menu-icon">H</span> Return to Home</a>
+        <a class="logout-action" href="login.html" data-logout-open><span class="menu-icon">L</span> Logout</a>
+      </div>
+
+      <nav class="dashboard-menu">
+        <a class="active" href="dashboard.html"><span>▦</span> Overview</a>
+        <a href="restaurants.html"><span>◈</span> Restaurants</a>
+        <a href="popular.html"><span>◉</span> Menu Items</a>
+        <a href="offers.html"><span>%</span> Offers</a>
+        <a href="contact.html"><span>?</span> Support</a>
+      </nav>
+
+      <section class="driver-card">
+        <img src="images/delivery-courier.png" alt="Delivery courier">
+        <h2>Live Fleet</h2>
+        <p>42 riders active across 8 delivery zones.</p>
+      </section>
+    </aside>
+
+    <section class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div>
+          <p class="eyebrow">Food delivery control center</p>
+          <h1>Dashboard</h1>
+        </div>
+        <form class="dashboard-search">
+          <label for="dashboard-query">Search</label>
+          <input id="dashboard-query" type="search" placeholder="Search orders, riders, restaurants">
+        </form>
+        <a class="dashboard-user" href="login.html" aria-label="User profile">
+          <span>KA</span>
+        </a>
+      </header>
+
+      <section class="metric-grid" id="rewards" aria-label="Dashboard metrics">
+        <article>
+          <span class="metric-icon orders">▣</span>
+          <p>Total Orders</p>
+          <strong>12,840</strong>
+          <small>+18.2% this week</small>
+        </article>
+        <article>
+          <span class="metric-icon revenue">$</span>
+          <p>Revenue</p>
+          <strong>$84.2k</strong>
+          <small>+9.4% this month</small>
+        </article>
+        <article>
+          <span class="metric-icon delivery">↗</span>
+          <p>Avg Delivery</p>
+          <strong>27 min</strong>
+          <small>3 min faster today</small>
+        </article>
+        <article>
+          <span class="metric-icon rating">★</span>
+          <p>Rating</p>
+          <strong>4.9</strong>
+          <small>2,418 new reviews</small>
+        </article>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="dashboard-panel sales-panel" id="energy">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Revenue trend</p>
+              <h2>Weekly order value</h2>
+            </div>
+            <span class="pill">July 2026</span>
+          </div>
+          <div class="bar-chart" aria-label="Weekly order value chart">
+            <span style="--height: 48%"><b>Mon</b></span>
+            <span style="--height: 68%"><b>Tue</b></span>
+            <span style="--height: 56%"><b>Wed</b></span>
+            <span style="--height: 82%"><b>Thu</b></span>
+            <span style="--height: 74%"><b>Fri</b></span>
+            <span style="--height: 92%"><b>Sat</b></span>
+            <span style="--height: 63%"><b>Sun</b></span>
+          </div>
+        </article>
+
+        <article class="dashboard-panel delivery-map-panel" id="reservations">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Live tracking</p>
+              <h2>Delivery zones</h2>
+            </div>
+          </div>
+          <div class="dashboard-map" aria-label="Delivery map preview">
+            <span class="map-dot dot-one">North</span>
+            <span class="map-dot dot-two">Central</span>
+            <span class="map-dot dot-three">South</span>
+            <div class="route-a"></div>
+            <div class="route-b"></div>
+          </div>
+        </article>
+
+        <article class="dashboard-panel orders-panel" id="orders">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Live orders</p>
+              <h2>Recent activity</h2>
+            </div>
+            <span class="pill">24 active</span>
+          </div>
+          <div class="orders-table" role="table" aria-label="Recent delivery orders">
+            <div role="row">
+              <span>Order</span>
+              <span>Customer</span>
+              <span>Status</span>
+              <span>Total</span>
+            </div>
+            <div role="row">
+              <strong>#FD-2481</strong>
+              <span>Aria Lane</span>
+              <mark class="status preparing">Preparing</mark>
+              <b>$42.80</b>
+            </div>
+            <div role="row">
+              <strong>#FD-2479</strong>
+              <span>Marco Wells</span>
+              <mark class="status onroute">On route</mark>
+              <b>$27.50</b>
+            </div>
+            <div role="row">
+              <strong>#FD-2476</strong>
+              <span>Nina Patel</span>
+              <mark class="status delivered">Delivered</mark>
+              <b>$18.90</b>
+            </div>
+            <div role="row">
+              <strong>#FD-2471</strong>
+              <span>Leo Brooks</span>
+              <mark class="status preparing">Preparing</mark>
+              <b>$35.25</b>
+            </div>
+          </div>
+        </article>
+
+        <article class="dashboard-panel popular-panel" id="favorites">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Best sellers</p>
+              <h2>Top dishes</h2>
+            </div>
+          </div>
+          <div class="top-dish-list">
+            <a href="popular.html">
+              <img src="images/noodle-card.png" alt="Firecracker noodle bowl">
+              <span><strong>Firecracker Noodles</strong><small>1,240 orders</small></span>
+              <b>$12.99</b>
+            </a>
+            <a href="popular.html">
+              <img src="images/pizza-card.png" alt="Rainbow garden pizza">
+              <span><strong>Rainbow Pizza</strong><small>980 orders</small></span>
+              <b>$16.50</b>
+            </a>
+            <a href="popular.html">
+              <img src="images/burger-card.png" alt="Stacked smash burger">
+              <span><strong>Smash Burger</strong><small>812 orders</small></span>
+              <b>$14.25</b>
+            </a>
+          </div>
+        </article>
+
+        <article class="dashboard-panel rider-panel" id="notifications">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Rider performance</p>
+              <h2>Fastest couriers</h2>
+            </div>
+          </div>
+          <div class="rider-list">
+            <div><span>MJ</span><strong>Maya Joseph</strong><small>96 deliveries</small></div>
+            <div><span>TS</span><strong>Tom Silva</strong><small>84 deliveries</small></div>
+            <div><span>AK</span><strong>Anika Khan</strong><small>79 deliveries</small></div>
+          </div>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <div class="logout-modal" aria-hidden="true" data-logout-modal>
+    <div class="logout-dialog" role="dialog" aria-modal="true" aria-labelledby="logout-title">
+      <span class="logout-icon">L</span>
+      <h2 id="logout-title">Logout?</h2>
+      <p>Are you sure you want to leave your Foodly dashboard?</p>
+      <div class="logout-actions">
+        <button type="button" class="cancel-logout" data-logout-cancel>Cancel</button>
+        <a class="confirm-logout" href="login.html">Confirm</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
