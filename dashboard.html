@@ -28,22 +28,21 @@
       <nav class="dashboard-menu account-menu">
         <p>My Account</p>
         <a class="active" href="dashboard.html"><span class="menu-icon">D</span> Dashboard</a>
-        <a href="#orders"><span class="menu-icon">O</span> My Orders <b>3</b></a>
-        <a href="#reservations"><span class="menu-icon">S</span> Food Support</a>
-        <a href="#favorites"><span class="menu-icon">W</span> Wishlist</a>
+        <a href="dashboard-orders.html"><span class="menu-icon">O</span> My Orders <b>5</b></a>
+        <a href="dashboard-support.html"><span class="menu-icon">S</span> Food Support</a>
+        <a href="dashboard-wishlist.html"><span class="menu-icon">W</span> Wishlist</a>
 
         <p>Rewards</p>
-        <a href="#rewards"><span class="menu-icon">R</span> Foodly Rewards</a>
-        <a href="#offers"><span class="menu-icon">M</span> Membership Plans</a>
-        <a href="#energy"><span class="menu-icon">I</span> Purchase Insights</a>
+        <a href="dashboard-rewards.html"><span class="menu-icon">R</span> Foodly Rewards</a>
+        <a href="dashboard-membership.html"><span class="menu-icon">M</span> Membership Plans</a>
+        <a href="dashboard-insights.html"><span class="menu-icon">I</span> Purchase Insights</a>
 
         <p>Settings</p>
-        <a href="#notifications"><span class="menu-icon">N</span> Notifications</a>
-        <a href="#settings"><span class="menu-icon">G</span> Settings</a>
+        <a href="dashboard-notifications.html"><span class="menu-icon">N</span> Notifications</a>
+        <a href="dashboard-settings.html"><span class="menu-icon">G</span> Settings</a>
       </nav>
 
       <div class="dashboard-sidebar-actions">
-        <a href="index.html"><span class="menu-icon">H</span> Return to Home</a>
         <a class="logout-action" href="login.html" data-logout-open><span class="menu-icon">L</span> Logout</a>
       </div>
 
@@ -62,7 +61,7 @@
       </section>
     </aside>
 
-    <section class="dashboard-main">
+    <section class="dashboard-main" id="dashboard-home">
       <header class="dashboard-topbar">
         <div>
           <p class="eyebrow">Food delivery control center</p>
@@ -72,10 +71,54 @@
           <label for="dashboard-query">Search</label>
           <input id="dashboard-query" type="search" placeholder="Search orders, riders, restaurants">
         </form>
-        <a class="dashboard-user" href="login.html" aria-label="User profile">
-          <span>KA</span>
-        </a>
+        <span class="dashboard-user" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 12c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4zm0 2c-3.6 0-7 1.8-7 4.5V20h14v-1.5c0-2.7-3.4-4.5-7-4.5z"/>
+          </svg>
+        </span>
       </header>
+
+      <section class="dashboard-food-banner" aria-label="Featured food dashboard image">
+        <div class="dashboard-banner-media">
+          <img src="images/cuisine-collage.png" alt="Fresh dishes dashboard preview">
+          <span class="live-badge">Live demand</span>
+          <div class="dashboard-mini-ticket">
+            <strong>21 min</strong>
+            <small>average delivery</small>
+          </div>
+        </div>
+        <div>
+          <p class="eyebrow">Today's kitchen view</p>
+          <h2>Fresh orders are moving fast.</h2>
+          <span>Track popular meals, quick prep, and top restaurant demand in one place.</span>
+          <div class="dashboard-banner-stats" aria-label="Kitchen highlights">
+            <b>18</b><small>Partner kitchens live</small>
+            <b>96%</b><small>On-time prep score</small>
+          </div>
+          <div class="dashboard-action-row" aria-label="Dashboard quick actions">
+            <a href="dashboard-orders.html">View Orders</a>
+            <a href="dashboard-insights.html">See Insights</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="kitchen-pulse" aria-label="Kitchen pulse">
+        <article>
+          <span>Hot window</span>
+          <strong>12:30 - 2:00</strong>
+          <small>Lunch demand peak</small>
+        </article>
+        <article>
+          <span>Prep queue</span>
+          <strong>38 orders</strong>
+          <small>11 need rider match</small>
+        </article>
+        <article>
+          <span>Top craving</span>
+          <strong>Spicy bowls</strong>
+          <small>+31% since morning</small>
+        </article>
+      </section>
 
       <section class="metric-grid" id="rewards" aria-label="Dashboard metrics">
         <article>
@@ -101,6 +144,25 @@
           <p>Rating</p>
           <strong>4.9</strong>
           <small>2,418 new reviews</small>
+        </article>
+      </section>
+
+      <section class="dashboard-experience-row" aria-label="Customer experience overview">
+        <article class="experience-score-card">
+          <div>
+            <p class="eyebrow">Experience score</p>
+            <h2>94</h2>
+            <span>Excellent kitchen, rider, and customer balance today.</span>
+          </div>
+          <div class="score-ring" aria-hidden="true"><strong>94%</strong></div>
+        </article>
+        <article class="restaurant-spotlight-card">
+          <img src="images/popular-biryani.png" alt="Featured biryani dish">
+          <div>
+            <p class="eyebrow">Restaurant spotlight</p>
+            <h2>Royal Biryani House</h2>
+            <span>Trending in Central with a 21 minute average dispatch time.</span>
+          </div>
         </article>
       </section>
 
@@ -137,6 +199,23 @@
             <span class="map-dot dot-three">South</span>
             <div class="route-a"></div>
             <div class="route-b"></div>
+          </div>
+        </article>
+
+        <article class="dashboard-panel demand-panel" id="offers">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Demand heat</p>
+              <h2>Craving map</h2>
+            </div>
+            <span class="pill">Live</span>
+          </div>
+          <div class="craving-heatmap" aria-label="Demand heat by dish type">
+            <span style="--level: 92%"><b>Biryani</b><small>92%</small></span>
+            <span style="--level: 76%"><b>Pizza</b><small>76%</small></span>
+            <span style="--level: 68%"><b>Noodles</b><small>68%</small></span>
+            <span style="--level: 54%"><b>Burgers</b><small>54%</small></span>
+            <span style="--level: 47%"><b>Dessert</b><small>47%</small></span>
           </div>
         </article>
 
@@ -219,6 +298,36 @@
             <div><span>MJ</span><strong>Maya Joseph</strong><small>96 deliveries</small></div>
             <div><span>TS</span><strong>Tom Silva</strong><small>84 deliveries</small></div>
             <div><span>AK</span><strong>Anika Khan</strong><small>79 deliveries</small></div>
+          </div>
+        </article>
+
+        <article class="dashboard-panel settings-panel" id="settings">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Account controls</p>
+              <h2>Settings</h2>
+            </div>
+            <span class="pill">Updated</span>
+          </div>
+          <div class="settings-list" aria-label="Dashboard settings">
+            <div><span>Order alerts</span><strong>Enabled</strong></div>
+            <div><span>Weekly report</span><strong>Friday</strong></div>
+            <div><span>Delivery radius</span><strong>8 zones</strong></div>
+          </div>
+        </article>
+
+        <article class="dashboard-panel timeline-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Operations timeline</p>
+              <h2>Next 30 minutes</h2>
+            </div>
+            <span class="pill">Live queue</span>
+          </div>
+          <div class="ops-timeline" aria-label="Upcoming operations">
+            <div><time>12:42</time><span>Riders collect 9 packed lunch orders from Central Hub.</span></div>
+            <div><time>12:51</time><span>Pizza Garden opens second oven lane for office demand.</span></div>
+            <div><time>13:05</time><span>Reward offer rotates to dessert combos for repeat users.</span></div>
           </div>
         </article>
       </section>

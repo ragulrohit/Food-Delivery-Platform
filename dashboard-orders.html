@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Orders | Foodly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700&family=Playfair+Display:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-page">
+  <main class="dashboard-shell">
+    <aside class="dashboard-sidebar" aria-label="Dashboard navigation">
+      <a class="dashboard-logo" href="index.html" aria-label="Stackly home"><img src="images/Stackly_logo.png" alt="Stackly logo"></a>
+      <section class="dashboard-profile"><span class="profile-avatar">RA</span><div><small>Welcome back</small><strong>Ragul</strong><p>ragulrohit143@gmail.com</p></div></section>
+      <nav class="dashboard-menu account-menu">
+        <p>My Account</p>
+        <a href="dashboard.html"><span class="menu-icon">D</span> Dashboard</a>
+        <a class="active" href="dashboard-orders.html"><span class="menu-icon">O</span> My Orders <b>5</b></a>
+        <a href="dashboard-support.html"><span class="menu-icon">S</span> Food Support</a>
+        <a href="dashboard-wishlist.html"><span class="menu-icon">W</span> Wishlist</a>
+        <p>Rewards</p>
+        <a href="dashboard-rewards.html"><span class="menu-icon">R</span> Foodly Rewards</a>
+        <a href="dashboard-membership.html"><span class="menu-icon">M</span> Membership Plans</a>
+        <a href="dashboard-insights.html"><span class="menu-icon">I</span> Purchase Insights</a>
+        <p>Settings</p>
+        <a href="dashboard-notifications.html"><span class="menu-icon">N</span> Notifications</a>
+        <a href="dashboard-settings.html"><span class="menu-icon">G</span> Settings</a>
+      </nav>
+      <div class="dashboard-sidebar-actions"><a class="logout-action" href="login.html"><span class="menu-icon">L</span> Logout</a></div>
+    </aside>
+    <section class="dashboard-main dashboard-topic-page">
+      <header class="dashboard-topbar"><div><p class="eyebrow">My Account</p><h1>My Orders</h1></div><span class="dashboard-user" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4zm0 2c-3.6 0-7 1.8-7 4.5V20h14v-1.5c0-2.7-3.4-4.5-7-4.5z"/></svg></span></header>
+      <section class="dashboard-grid"><article class="dashboard-panel orders-panel">
+        <div class="panel-heading"><div><p class="eyebrow">Order history</p><h2>Active and recent orders</h2></div><span class="pill">3 active</span></div>
+        <div class="orders-table" role="table" aria-label="My orders">
+          <div role="row"><span>Order</span><span>Restaurant</span><span>Status</span><span>Total</span></div>
+          <div role="row"><strong>#FD-2481</strong><span>Urban Bowl Co.</span><mark class="status preparing">Preparing</mark><b>$42.80</b></div>
+          <div role="row"><strong>#FD-2479</strong><span>Pizza Garden</span><mark class="status onroute">On route</mark><b>$27.50</b></div>
+          <div role="row"><strong>#FD-2476</strong><span>Noodle House</span><mark class="status delivered">Delivered</mark><b>$18.90</b></div>
+        </div>
+      </article><article class="dashboard-panel"><div class="panel-heading"><div><p class="eyebrow">Order actions</p><h2>Quick tools</h2></div></div><div class="settings-list"><div><span>Track rider</span><strong>2 live</strong></div><div><span>Reorder favorites</span><strong>3 meals</strong></div><div><span>Download invoices</span><strong>Ready</strong></div></div></article></section>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Purchase Insights | Foodly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700&family=Playfair+Display:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-page">
+  <main class="dashboard-shell">
+    <aside class="dashboard-sidebar" aria-label="Dashboard navigation">
+      <a class="dashboard-logo" href="index.html" aria-label="Stackly home"><img src="images/Stackly_logo.png" alt="Stackly logo"></a>
+      <section class="dashboard-profile"><span class="profile-avatar">RA</span><div><small>Welcome back</small><strong>Ragul</strong><p>ragulrohit143@gmail.com</p></div></section>
+      <nav class="dashboard-menu account-menu">
+        <p>My Account</p><a href="dashboard.html"><span class="menu-icon">D</span> Dashboard</a><a href="dashboard-orders.html"><span class="menu-icon">O</span> My Orders <b>5</b></a><a href="dashboard-support.html"><span class="menu-icon">S</span> Food Support</a><a href="dashboard-wishlist.html"><span class="menu-icon">W</span> Wishlist</a>
+        <p>Rewards</p><a href="dashboard-rewards.html"><span class="menu-icon">R</span> Foodly Rewards</a><a href="dashboard-membership.html"><span class="menu-icon">M</span> Membership Plans</a><a class="active" href="dashboard-insights.html"><span class="menu-icon">I</span> Purchase Insights</a>
+        <p>Settings</p><a href="dashboard-notifications.html"><span class="menu-icon">N</span> Notifications</a><a href="dashboard-settings.html"><span class="menu-icon">G</span> Settings</a>
+      </nav>
+      <div class="dashboard-sidebar-actions"><a class="logout-action" href="login.html"><span class="menu-icon">L</span> Logout</a></div>
+    </aside>
+    <section class="dashboard-main dashboard-topic-page">
+      <header class="dashboard-topbar"><div><p class="eyebrow">Analytics</p><h1>Purchase Insights</h1></div><span class="dashboard-user" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4zm0 2c-3.6 0-7 1.8-7 4.5V20h14v-1.5c0-2.7-3.4-4.5-7-4.5z"/></svg></span></header>
+      <section class="dashboard-grid"><article class="dashboard-panel sales-panel"><div class="panel-heading"><div><p class="eyebrow">Spending trend</p><h2>Weekly order value</h2></div><span class="pill">July 2026</span></div><div class="bar-chart" aria-label="Weekly order value chart"><span style="--height: 48%"><b>Mon</b></span><span style="--height: 68%"><b>Tue</b></span><span style="--height: 56%"><b>Wed</b></span><span style="--height: 82%"><b>Thu</b></span><span style="--height: 74%"><b>Fri</b></span><span style="--height: 92%"><b>Sat</b></span><span style="--height: 63%"><b>Sun</b></span></div></article><article class="dashboard-panel"><div class="panel-heading"><div><p class="eyebrow">Buying pattern</p><h2>Favorite categories</h2></div></div><div class="craving-heatmap"><span style="--level: 88%"><b>Rice bowls</b><small>88%</small></span><span style="--level: 72%"><b>Pizza</b><small>72%</small></span><span style="--level: 63%"><b>Dessert</b><small>63%</small></span><span style="--level: 45%"><b>Burgers</b><small>45%</small></span></div></article><article class="dashboard-panel timeline-panel"><div class="panel-heading"><div><p class="eyebrow">Recommendations</p><h2>Smart savings</h2></div></div><div class="ops-timeline"><div><time>Lunch</time><span>Order bowls before 1 PM to use the highest-value coupon.</span></div><div><time>Weekend</time><span>Bundle pizza and dessert to save about 18%.</span></div><div><time>Rewards</time><span>Two more dinner orders will unlock the next delivery perk.</span></div></div></article></section>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

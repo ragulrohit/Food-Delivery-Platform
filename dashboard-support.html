@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Support | Foodly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700&family=Playfair+Display:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-page">
+  <main class="dashboard-shell">
+    <aside class="dashboard-sidebar" aria-label="Dashboard navigation">
+      <a class="dashboard-logo" href="index.html" aria-label="Stackly home"><img src="images/Stackly_logo.png" alt="Stackly logo"></a>
+      <section class="dashboard-profile"><span class="profile-avatar">RA</span><div><small>Welcome back</small><strong>Ragul</strong><p>ragulrohit143@gmail.com</p></div></section>
+      <nav class="dashboard-menu account-menu">
+        <p>My Account</p><a href="dashboard.html"><span class="menu-icon">D</span> Dashboard</a><a href="dashboard-orders.html"><span class="menu-icon">O</span> My Orders <b>5</b></a><a class="active" href="dashboard-support.html"><span class="menu-icon">S</span> Food Support</a><a href="dashboard-wishlist.html"><span class="menu-icon">W</span> Wishlist</a>
+        <p>Rewards</p><a href="dashboard-rewards.html"><span class="menu-icon">R</span> Foodly Rewards</a><a href="dashboard-membership.html"><span class="menu-icon">M</span> Membership Plans</a><a href="dashboard-insights.html"><span class="menu-icon">I</span> Purchase Insights</a>
+        <p>Settings</p><a href="dashboard-notifications.html"><span class="menu-icon">N</span> Notifications</a><a href="dashboard-settings.html"><span class="menu-icon">G</span> Settings</a>
+      </nav>
+      <div class="dashboard-sidebar-actions"><a class="logout-action" href="login.html"><span class="menu-icon">L</span> Logout</a></div>
+    </aside>
+    <section class="dashboard-main dashboard-topic-page">
+      <header class="dashboard-topbar"><div><p class="eyebrow">Help center</p><h1>Food Support</h1></div><span class="dashboard-user" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4zm0 2c-3.6 0-7 1.8-7 4.5V20h14v-1.5c0-2.7-3.4-4.5-7-4.5z"/></svg></span></header>
+      <section class="dashboard-grid">
+        <article class="dashboard-panel"><div class="panel-heading"><div><p class="eyebrow">Open tickets</p><h2>Support queue</h2></div><span class="pill">2 active</span></div><div class="settings-list"><div><span>Late delivery follow-up</span><strong>In review</strong></div><div><span>Refund request #FD-2476</span><strong>Processing</strong></div><div><span>Missing dessert add-on</span><strong>Resolved</strong></div></div></article>
+        <article class="dashboard-panel"><div class="panel-heading"><div><p class="eyebrow">Fast help</p><h2>Contact options</h2></div><span class="pill">24/7</span></div><div class="settings-list"><div><span>Live chat</span><strong>Online</strong></div><div><span>Email response</span><strong>Under 24 hr</strong></div><div><span>Call support</span><strong>Active</strong></div></div></article>
+        <article class="dashboard-panel timeline-panel"><div class="panel-heading"><div><p class="eyebrow">Help topics</p><h2>Most requested</h2></div></div><div class="ops-timeline"><div><time>Orders</time><span>Track delayed orders, rider handoff, and restaurant prep updates.</span></div><div><time>Refunds</time><span>Check payment reversals, wallet credits, and coupon adjustments.</span></div><div><time>Address</time><span>Edit saved delivery locations and contact instructions.</span></div></div></article>
+      </section>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

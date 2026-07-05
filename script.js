@@ -1,6 +1,6 @@
 const header = document.querySelector(".site-header");
 const revealItems = document.querySelectorAll(
-  ".category, .discover, .offer-card, .story-card, .delivery-card, .delivery-steps article, .dish-card, .promise-row article, .app-band, .page-hero, .restaurant-showcase, .restaurant-list article, .famous-food-grid article, .deal-board article, .offer-price-grid article, .popular-food-grid article, .platform-grid article, .place-grid article, .menu-gallery article, .app-features article, .app-screen-card, .app-flow article, .contact-layout, .location-section"
+  ".hero-visual, .category, .discover, .mood-grid span, .offer-card, .story-card, .delivery-card, .delivery-steps article, .dish-card, .promise-row article, .app-band, .phone-card, .page-hero, .restaurant-showcase, .restaurant-list article, .famous-food-grid article, .deal-board article, .offer-price-grid article, .popular-food-grid article, .platform-grid article, .place-grid article, .menu-gallery article, .app-features article, .app-screen-card, .app-flow article, .contact-layout, .contact-form, .contact-cards article, .location-section, .location-list article, .login-showcase, .login-panel, .social-login a, .footer-brand, .footer-column, .dashboard-sidebar, .dashboard-topbar, .dashboard-food-banner, .kitchen-pulse article, .metric-grid article, .dashboard-experience-row article, .dashboard-panel, .settings-list div, .ops-timeline div"
 );
 
 function updateHeader() {
@@ -72,6 +72,67 @@ function showLoginSuccess(message) {
   successMessage.classList.add("show");
 }
 
+function getStoredDashboardUser() {
+  try {
+    return JSON.parse(localStorage.getItem("stacklyDashboardUser") || "null");
+  } catch {
+    return null;
+  }
+}
+
+function saveDashboardUser(user) {
+  try {
+    localStorage.setItem("stacklyDashboardUser", JSON.stringify(user));
+  } catch {
+    // Local storage can be unavailable in private or restricted browser modes.
+  }
+}
+
+function nameFromEmail(email) {
+  const fallback = "Ragul";
+  if (!email) return fallback;
+
+  const localPart = email.split("@")[0]?.replace(/[._-]+/g, " ").replace(/\d+/g, "").trim();
+  if (!localPart) return fallback;
+
+  return localPart
+    .split(" ")
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+    .join(" ");
+}
+
+function getInitials(name, email) {
+  const source = name || nameFromEmail(email);
+  const initials = source
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part.charAt(0).toUpperCase())
+    .join("");
+
+  return initials || "RA";
+}
+
+function setupDashboardUserProfile() {
+  const profiles = document.querySelectorAll(".dashboard-profile");
+  if (!profiles.length) return;
+
+  const storedUser = getStoredDashboardUser();
+
+  profiles.forEach((profile) => {
+    const avatar = profile.querySelector(".profile-avatar");
+    const name = profile.querySelector("strong");
+    const email = profile.querySelector("p");
+    const displayName = storedUser?.name || name?.textContent.trim() || "Ragul";
+    const displayEmail = storedUser?.email || email?.textContent.trim() || "ragulrohit143@gmail.com";
+
+    if (avatar) avatar.textContent = getInitials(displayName, displayEmail);
+    if (name) name.textContent = displayName;
+    if (email) email.textContent = displayEmail;
+  });
+}
+
 function setupReveal() {
   if (!("IntersectionObserver" in window)) {
     revealItems.forEach((item) => item.classList.add("is-visible"));
@@ -90,8 +151,9 @@ function setupReveal() {
     { threshold: 0.16 }
   );
 
-  revealItems.forEach((item) => {
+  revealItems.forEach((item, index) => {
     item.classList.add("reveal");
+    item.style.setProperty("--reveal-delay", `${Math.min(index % 8, 7) * 70}ms`);
     observer.observe(item);
   });
 }
@@ -142,6 +204,8 @@ function setupForms() {
 
         const password = document.querySelector("#login-password");
         const confirmPassword = document.querySelector("#confirm-password");
+        const signupName = document.querySelector("#signup-name");
+        const signupEmail = document.querySelector("#login-email");
 
         if (password && confirmPassword && password.value !== confirmPassword.value) {
           confirmPassword.setCustomValidity("Passwords do not match.");
@@ -149,6 +213,11 @@ function setupForms() {
           confirmPassword.setCustomValidity("");
           return;
         }
+
+        saveDashboardUser({
+          name: signupName?.value.trim() || nameFromEmail(signupEmail?.value.trim()),
+          email: signupEmail?.value.trim() || "ragulrohit143@gmail.com",
+        });
 
         showToast("Account created. Please sign in.");
         loginForm.reset();
@@ -168,6 +237,14 @@ function setupForms() {
       if (password && !password.reportValidity()) {
         return;
       }
+
+      const emailValue = email?.value.trim() || "ragulrohit143@gmail.com";
+      const storedUser = getStoredDashboardUser();
+
+      saveDashboardUser({
+        name: storedUser?.email === emailValue && storedUser?.name ? storedUser.name : nameFromEmail(emailValue),
+        email: emailValue,
+      });
 
       const submitButton = loginForm.querySelector("button[type='submit']");
       showToast("Sign in successful. Opening dashboard...");
@@ -198,20 +275,53 @@ function setupForms() {
 }
 
 function setupLogoutModal() {
-  const openButton = document.querySelector("[data-logout-open]");
-  const modal = document.querySelector("[data-logout-modal]");
-  const cancelButton = document.querySelector("[data-logout-cancel]");
+  const openButtons = document.querySelectorAll("[data-logout-open], .logout-action");
+  let modal = document.querySelector("[data-logout-modal]");
 
-  if (!openButton || !modal || !cancelButton) return;
+  if (!openButtons.length) return;
+
+  if (!modal) {
+    modal = document.createElement("div");
+    modal.className = "logout-modal";
+    modal.setAttribute("aria-hidden", "true");
+    modal.setAttribute("data-logout-modal", "");
+    modal.innerHTML = `
+      <div class="logout-dialog" role="dialog" aria-modal="true" aria-labelledby="logout-title">
+        <span class="logout-icon">L</span>
+        <h2 id="logout-title">Logout?</h2>
+        <p>Are you sure you want to leave your Foodly dashboard?</p>
+        <div class="logout-actions">
+          <button type="button" class="cancel-logout" data-logout-cancel>Cancel</button>
+          <a class="confirm-logout" href="login.html">Confirm</a>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+  }
+
+  const cancelButton = modal.querySelector("[data-logout-cancel]");
+  const confirmButton = modal.querySelector(".confirm-logout");
+  const dialog = modal.querySelector(".logout-dialog");
+
+  if (!cancelButton || !confirmButton || !dialog) return;
 
   function setLogoutModal(isOpen) {
     modal.classList.toggle("is-open", isOpen);
     modal.setAttribute("aria-hidden", String(!isOpen));
+    document.body.classList.toggle("logout-modal-open", isOpen);
+
+    if (isOpen) {
+      cancelButton.focus();
+    }
   }
 
-  openButton.addEventListener("click", (event) => {
-    event.preventDefault();
-    setLogoutModal(true);
+  openButtons.forEach((openButton) => {
+    openButton.setAttribute("data-logout-open", "");
+    openButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      confirmButton.setAttribute("href", openButton.getAttribute("href") || "login.html");
+      setLogoutModal(true);
+    });
   });
 
   cancelButton.addEventListener("click", () => setLogoutModal(false));
@@ -229,20 +339,54 @@ function setupLogoutModal() {
   });
 }
 
+function setupDashboardSidebar() {
+  const sidebarLinks = document.querySelectorAll(".account-menu a[href^='#']");
+  if (!sidebarLinks.length) return;
+
+  sidebarLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const target = document.querySelector(link.getAttribute("href"));
+      if (!target) return;
+
+      event.preventDefault();
+      sidebarLinks.forEach((item) => item.classList.remove("active"));
+      link.classList.add("active");
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      history.replaceState(null, "", link.getAttribute("href"));
+    });
+  });
+}
+
+function setupGoBackButtons() {
+  const goBackButtons = document.querySelectorAll("[data-go-back]");
+  if (!goBackButtons.length) return;
+
+  goBackButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (window.history.length > 1) {
+        window.history.back();
+        return;
+      }
+
+      window.location.href = "index.html";
+    });
+  });
+}
+
 function setupAuthMode() {
   const loginPage = document.querySelector(".login-page");
   const authLinks = document.querySelectorAll("[data-auth-mode]");
   const heading = document.querySelector(".login-heading h2");
   const subheading = document.querySelector(".login-heading p");
-  const submitButton = document.querySelector(".login-form button");
+  const submitButton = document.querySelector(".login-form button[type='submit']");
 
   if (!loginPage || !authLinks.length || !heading || !subheading || !submitButton) return;
 
   function setAuthMode(mode) {
     const isSignup = mode === "signup";
     loginPage.classList.toggle("is-signup", isSignup);
-    heading.textContent = isSignup ? "Create Account" : "Sign In";
-    subheading.textContent = isSignup ? "Start your Foodly dashboard." : "Enter your Foodly dashboard.";
+    heading.innerHTML = isSignup ? '<span>Create</span> Account' : '<span>Sign</span> In';
+    subheading.textContent = isSignup ? "Start your Stackly dashboard." : "Enter your Stackly dashboard.";
     submitButton.innerHTML = isSignup ? 'Create Account <span aria-hidden="true">-></span>' : 'Sign In <span aria-hidden="true">-></span>';
   }
 
@@ -252,6 +396,29 @@ function setupAuthMode() {
     link.addEventListener("click", (event) => {
       event.preventDefault();
       setAuthMode(link.dataset.authMode);
+    });
+  });
+}
+
+function setupPasswordToggles() {
+  const toggles = document.querySelectorAll("[data-password-toggle]");
+  if (!toggles.length) return;
+
+  toggles.forEach((toggle) => {
+    const field = toggle.closest(".password-field");
+    const input = field?.querySelector("input");
+    if (!input) return;
+
+    const showLabel = toggle.getAttribute("aria-label") || "Show password";
+    const hideLabel = showLabel.replace("Show", "Hide");
+
+    toggle.addEventListener("click", () => {
+      const isHidden = input.type === "password";
+      input.type = isHidden ? "text" : "password";
+      toggle.textContent = isHidden ? "Hide" : "Show";
+      toggle.setAttribute("aria-label", isHidden ? hideLabel : showLabel);
+      toggle.setAttribute("aria-pressed", String(isHidden));
+      input.focus();
     });
   });
 }
@@ -362,7 +529,11 @@ window.addEventListener("load", () => {
   setupReveal();
   setupForms();
   setupLogoutModal();
+  setupDashboardSidebar();
+  setupDashboardUserProfile();
+  setupGoBackButtons();
   setupAuthMode();
+  setupPasswordToggles();
   setupLoginRoleToggle();
   setupRestaurantSlider();
   setupCountdowns();
