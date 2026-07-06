@@ -70,6 +70,34 @@ function showLoginSuccess(message) {
 
   successMessage.textContent = message;
   successMessage.classList.add("show");
+  window.clearTimeout(showLoginSuccess.timer);
+  showLoginSuccess.timer = window.setTimeout(hideLoginSuccess, 2400);
+}
+
+function hideLoginSuccess() {
+  const successMessage = document.querySelector(".login-success-message");
+  if (!successMessage) return;
+
+  window.clearTimeout(showLoginSuccess.timer);
+  successMessage.classList.remove("show");
+  successMessage.textContent = "";
+}
+
+function resetLoginSubmitButton() {
+  const loginPage = document.querySelector(".login-page");
+  const loginForm = document.querySelector(".login-form");
+  const submitButton = loginForm?.querySelector("button[type='submit']");
+  if (!loginPage || !loginForm || !submitButton) return;
+
+  submitButton.disabled = false;
+  submitButton.innerHTML = loginPage.classList.contains("is-signup")
+    ? "Create Account"
+    : "Sign In";
+}
+
+function resetLoginPageState() {
+  hideLoginSuccess();
+  resetLoginSubmitButton();
 }
 
 function getStoredDashboardUser() {
@@ -257,6 +285,8 @@ function setupForms() {
 
       loginForm.reset();
       window.setTimeout(() => {
+        hideLoginSuccess();
+        resetLoginSubmitButton();
         window.location.href = "dashboard.html";
       }, 1200);
     });
@@ -387,7 +417,7 @@ function setupAuthMode() {
     loginPage.classList.toggle("is-signup", isSignup);
     heading.innerHTML = isSignup ? '<span>Create</span> Account' : '<span>Sign</span> In';
     subheading.textContent = isSignup ? "Start your Stackly dashboard." : "Enter your Stackly dashboard.";
-    submitButton.innerHTML = isSignup ? 'Create Account <span aria-hidden="true">-></span>' : 'Sign In <span aria-hidden="true">-></span>';
+    submitButton.textContent = isSignup ? "Create Account" : "Sign In";
   }
 
   window.setAuthMode = setAuthMode;
@@ -396,8 +426,15 @@ function setupAuthMode() {
     link.addEventListener("click", (event) => {
       event.preventDefault();
       setAuthMode(link.dataset.authMode);
+      if (link.dataset.authMode === "signup") {
+        window.history.replaceState(null, "", "#create-account");
+      } else {
+        window.history.replaceState(null, "", window.location.pathname);
+      }
     });
   });
+
+  setAuthMode(window.location.hash === "#create-account" ? "signup" : "signin");
 }
 
 function setupPasswordToggles() {
@@ -523,6 +560,9 @@ function setupCountdowns() {
 }
 
 window.addEventListener("scroll", updateHeader, { passive: true });
+window.addEventListener("pageshow", resetLoginPageState);
+window.addEventListener("pagehide", resetLoginPageState);
+window.addEventListener("beforeunload", resetLoginPageState);
 window.addEventListener("load", () => {
   updateHeader();
   setupNavigation();
