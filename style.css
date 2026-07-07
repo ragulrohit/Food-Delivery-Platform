@@ -1586,13 +1586,29 @@ body:not(.login-page):not(.dashboard-page) .eyebrow {
 
 .offers-hero {
   background-image:
-    linear-gradient(135deg, rgba(255, 61, 46, 0.82), rgba(0, 184, 169, 0.44)),
+    linear-gradient(135deg, rgba(114, 18, 14, 0.74), rgba(0, 0, 0, 0.46)),
+    linear-gradient(90deg, rgba(255, 61, 46, 0.72), rgba(0, 184, 169, 0.18)),
     url("images/dessert-drinks.png");
 }
 
+.offers-hero h1,
+.offers-hero p {
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.48);
+}
+
 .offers-hero h1 span {
-  color: var(--yellow);
-  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+  color: #ff3d2e;
+  text-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.18),
+    0 10px 28px rgba(0, 0, 0, 0.42);
+}
+
+.offers-hero .eyebrow {
+  color: #ffffff;
+}
+
+.offers-hero p:not(.eyebrow) {
+  color: #ffffff;
 }
 
 .offers-page .offer-pricing h2 span {
@@ -1872,6 +1888,8 @@ body:not(.login-page):not(.dashboard-page) .eyebrow {
 }
 
 .offer-price-grid article {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   border-radius: 28px;
   background: rgba(255, 255, 255, 0.92);
@@ -1997,6 +2015,9 @@ body:not(.login-page):not(.dashboard-page) .eyebrow {
 }
 
 .offer-price-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   padding: 22px;
 }
 
@@ -2013,6 +2034,7 @@ body:not(.login-page):not(.dashboard-page) .eyebrow {
 }
 
 .offer-price-body h3 {
+  min-height: 2.9rem;
   font-size: 1.34rem;
   line-height: 1.08;
 }
@@ -2028,7 +2050,9 @@ body:not(.login-page):not(.dashboard-page) .eyebrow {
   display: flex;
   align-items: baseline;
   gap: 10px;
+  min-height: 38px;
   margin-bottom: 16px;
+  white-space: nowrap;
 }
 
 .price-row strong {
@@ -2043,6 +2067,7 @@ body:not(.login-page):not(.dashboard-page) .eyebrow {
 }
 
 .countdown {
+  margin-top: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2054,15 +2079,18 @@ body:not(.login-page):not(.dashboard-page) .eyebrow {
 }
 
 .countdown span {
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.9);
   font-size: 0.78rem;
   font-weight: 800;
   text-transform: uppercase;
 }
 
 .countdown strong {
+  color: #ffffff;
   font-family: "Outfit", sans-serif;
   font-size: 1.15rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
 }
 
 .deal-board,
@@ -3356,8 +3384,8 @@ body:not(.login-page):not(.dashboard-page) .eyebrow {
 }
 
 .error-logo {
-  width: 142px;
-  height: 56px;
+  width: 126px;
+  height: 46px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -3377,7 +3405,7 @@ body:not(.login-page):not(.dashboard-page) .eyebrow {
 }
 
 .error-logo img {
-  width: 138px;
+  width: 122px;
   height: auto;
   display: block;
   object-fit: contain;
@@ -3390,7 +3418,7 @@ body:not(.login-page):not(.dashboard-page) .eyebrow {
   display: grid;
   place-items: center;
   overflow: hidden;
-  padding: clamp(14px, 3vh, 32px) 24px;
+  padding: clamp(8px, 2vh, 18px) 18px;
 }
 
 .error-hero {
@@ -3399,10 +3427,10 @@ body:not(.login-page):not(.dashboard-page) .eyebrow {
   max-height: calc(100svh - 28px);
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.8fr);
-  gap: clamp(18px, 4vw, 52px);
+  gap: clamp(16px, 3vw, 38px);
   align-items: center;
   overflow: hidden;
-  padding: clamp(18px, 4vh, 40px);
+  padding: clamp(16px, 3vh, 28px);
   border: 1px solid rgba(255, 255, 255, 0.52);
   border-radius: 38px;
   background:
@@ -3432,39 +3460,39 @@ body:not(.login-page):not(.dashboard-page) .eyebrow {
 
 .error-code {
   display: block;
-  margin-bottom: clamp(6px, 1.3vh, 14px);
+  margin-bottom: clamp(4px, 1vh, 10px);
   color: var(--error-deep-red);
   font-family: "Pacifico", cursive;
-  font-size: clamp(3.6rem, 12vw, 7.4rem);
+  font-size: clamp(3rem, 8.4vw, 5.8rem);
   line-height: 0.85;
   text-shadow: 0 18px 38px rgba(157, 2, 8, 0.18);
 }
 
 .error-copy h1 {
-  max-width: 720px;
+  max-width: 620px;
   font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(2rem, 4.5vw, 4.25rem);
+  font-size: clamp(1.9rem, 3.8vw, 3.45rem);
   line-height: 0.96;
 }
 
 .error-copy p:not(.eyebrow) {
-  max-width: 610px;
-  margin: clamp(12px, 2vh, 20px) 0 0;
+  max-width: 570px;
+  margin: clamp(10px, 1.6vh, 16px) 0 0;
   color: #6f2630;
-  font-size: clamp(1rem, 1.6vw, 1.14rem);
-  line-height: 1.75;
+  font-size: clamp(0.96rem, 1.35vw, 1.04rem);
+  line-height: 1.55;
 }
 
 .error-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
-  margin-top: clamp(16px, 2.6vh, 26px);
+  gap: 12px;
+  margin-top: clamp(12px, 2vh, 18px);
 }
 
 .error-actions a,
 .error-actions button {
-  min-height: 52px;
+  min-height: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -3495,12 +3523,12 @@ body:not(.login-page):not(.dashboard-page) .eyebrow {
 }
 
 .error-plate {
-  min-height: min(380px, 50vh);
+  min-height: min(320px, 43vh);
 }
 
 .error-plate img {
-  width: min(380px, 100%);
-  height: min(380px, 50vh);
+  width: min(350px, 100%);
+  height: min(320px, 43vh);
   display: block;
   margin-left: auto;
   border-radius: 34px;
@@ -3514,7 +3542,7 @@ body:not(.login-page):not(.dashboard-page) .eyebrow {
   position: absolute;
   display: grid;
   gap: 4px;
-  padding: 16px;
+  padding: 13px;
   border: 1px solid rgba(239, 35, 60, 0.18);
   border-radius: 20px;
   background: rgba(255, 244, 245, 0.84);
@@ -3524,12 +3552,12 @@ body:not(.login-page):not(.dashboard-page) .eyebrow {
 
 .error-ticket {
   left: 0;
-  top: 44px;
+  top: 34px;
 }
 
 .error-mini-card {
-  right: 18px;
-  bottom: 42px;
+  right: 14px;
+  bottom: 32px;
 }
 
 .error-ticket strong,
@@ -3955,9 +3983,9 @@ body:not(.login-page):not(.dashboard-page) .eyebrow {
 .logout-dialog {
   width: min(420px, 100%);
   padding: 28px;
-  border: 1px solid var(--dash-border);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 18px;
-  color: var(--dash-text);
+  color: #ffffff;
   background: #141414;
   box-shadow: 0 28px 70px rgba(0, 0, 0, 0.42);
   text-align: center;
@@ -3982,12 +4010,13 @@ body:not(.login-page):not(.dashboard-page) .eyebrow {
 }
 
 .logout-dialog h2 {
+  color: #ffffff;
   font-size: 1.7rem;
 }
 
 .logout-dialog p {
   margin: 10px 0 22px;
-  color: var(--dash-muted);
+  color: rgba(255, 255, 255, 0.76);
   line-height: 1.55;
 }
 
@@ -4010,9 +4039,9 @@ body:not(.login-page):not(.dashboard-page) .eyebrow {
 }
 
 .cancel-logout {
-  border: 1px solid var(--dash-border);
-  color: var(--dash-text);
-  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .confirm-logout {
@@ -5400,18 +5429,22 @@ body:not(.login-page):not(.dashboard-page) .eyebrow {
     font-size: 0.86rem;
   }
 
-  .dashboard-topbar,
   .metric-grid,
   .dashboard-grid {
     grid-template-columns: 1fr;
   }
 
+  .dashboard-topbar {
+    grid-template-columns: minmax(0, 1fr) 52px;
+    align-items: end;
+  }
+
   .dashboard-user {
-    justify-self: start;
+    justify-self: end;
   }
 
   .dashboard-search {
-    grid-column: auto;
+    grid-column: 1 / -1;
   }
 
   .dashboard-food-banner {
