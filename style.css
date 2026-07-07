@@ -1839,6 +1839,8 @@ body:not(.login-page):not(.dashboard-page) .eyebrow {
 }
 
 .famous-food-grid article {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   border-radius: 28px;
   background: rgba(255, 255, 255, 0.9);
@@ -1854,6 +1856,9 @@ body:not(.login-page):not(.dashboard-page) .eyebrow {
 }
 
 .famous-food-grid div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   padding: 22px;
 }
 
@@ -1864,6 +1869,7 @@ body:not(.login-page):not(.dashboard-page) .eyebrow {
 }
 
 .famous-food-grid h3 {
+  min-height: 2.95rem;
   font-size: 1.36rem;
   line-height: 1.08;
 }
@@ -1876,9 +1882,12 @@ body:not(.login-page):not(.dashboard-page) .eyebrow {
 }
 
 .famous-food-grid strong {
+  margin-top: auto;
   color: var(--tomato);
   font-family: "Outfit", sans-serif;
   font-size: 1.25rem;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .offer-price-grid {
