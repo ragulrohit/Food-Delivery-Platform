@@ -102,7 +102,7 @@ function resetLoginPageState() {
 
 function getStoredDashboardUser() {
   try {
-    return JSON.parse(localStorage.getItem("stacklyDashboardUser") || "null");
+    return JSON.parse(localStorage.getItem("foodDeliveryDashboardUser") || "null");
   } catch {
     return null;
   }
@@ -110,7 +110,7 @@ function getStoredDashboardUser() {
 
 function saveDashboardUser(user) {
   try {
-    localStorage.setItem("stacklyDashboardUser", JSON.stringify(user));
+    localStorage.setItem("foodDeliveryDashboardUser", JSON.stringify(user));
   } catch {
     // Local storage can be unavailable in private or restricted browser modes.
   }
@@ -416,7 +416,7 @@ function setupAuthMode() {
     const isSignup = mode === "signup";
     loginPage.classList.toggle("is-signup", isSignup);
     heading.innerHTML = isSignup ? '<span>Create</span> Account' : '<span>Sign</span> In';
-    subheading.textContent = isSignup ? "Start your Stackly dashboard." : "Enter your Stackly dashboard.";
+    subheading.textContent = isSignup ? "Start your Food Delivery dashboard." : "Enter your Food Delivery dashboard.";
     submitButton.textContent = isSignup ? "Create Account" : "Sign In";
   }
 
